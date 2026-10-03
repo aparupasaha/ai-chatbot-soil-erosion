@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="SoilSense is a soil-erosion control assistant that answers questions from a curated soil-conservation knowledge base.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0b0a" media="(prefers-color-scheme: dark)">
+<title>SoilSense · Soil-erosion control assistant</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%2315803d'/%3E%3Cpath d='M16 25v-9M16 16c0-4 3-7 8-7 0 5-3 7-8 7zM16 19c0-3-2.5-5.5-7-5.5 0 4 2.5 5.5 7 5.5z' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/app.css">
+<script src="/static/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#input">Skip to message box</a>
+<div class="app" id="app">
+  <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+    <div class="side-head">
+      <span class="logo" data-logo></span>
+      <div class="brand"><div class="brand-name">SoilSense</div><div class="brand-tag">Soil-erosion control assistant</div></div>
+      <button class="icon-btn drawer-close" id="closeDrawer" type="button" aria-label="Close sidebar"><span data-i="x"></span></button>
+    </div>
+    <button class="new-chat" id="newChat" type="button"><span data-i="plus"></span>New chat<kbd>Ctrl Shift O</kbd></button>
+    <nav class="history" id="history" aria-label="Conversations"></nav>
+    <div class="side-foot"><span data-i="book"></span><span id="kbInfo">Curated knowledge base · TF-IDF retrieval</span></div>
+  </aside>
+  <div class="backdrop" id="backdrop"></div>
+
+  <main class="main" id="main">
+    <header class="topbar">
+      <button class="icon-btn" id="toggleSide" type="button" aria-label="Toggle sidebar" aria-controls="sidebar" aria-expanded="true"></button>
+      <button class="icon-btn only-collapsed" id="newChat2" type="button" aria-label="New chat"><span data-i="edit"></span></button>
+      <h1 class="chat-title" id="chatTitle">New chat</h1>
+      <span class="pill" id="status" role="status"><span class="dot"></span><span class="long">Connecting…</span><span class="short">…</span></span>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to dark theme"></button>
+    </header>
+
+    <div class="scroller" id="scroller">
+      <div class="col" id="view" aria-live="off"></div>
+    </div>
+
+    <div class="composer-wrap">
+      <button class="to-bottom" id="toBottom" type="button" aria-label="Scroll to latest message" hidden><span data-i="down"></span></button>
+      <div class="col">
+        <form class="composer" id="form" aria-label="Ask SoilSense">
+          <label for="input" class="sr-only">Ask about soil-erosion control</label>
+          <textarea id="input" rows="1" maxlength="500" placeholder="Ask about soil-erosion control…" aria-describedby="disclaimer count" autocomplete="off"></textarea>
+          <span class="count" id="count"></span>
+          <button class="send" id="send" type="submit" aria-label="Send message" disabled></button>
+        </form>
+        <p class="disclaimer" id="disclaimer">Answers come from a curated soil-conservation knowledge base. Verify important figures.</p>
+      </div>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"><span id="toastText"></span><button type="button" id="toastUndo">Undo</button></div>
+<div class="sr-only" id="announcer" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
